@@ -7,6 +7,7 @@ import './App.css';
 class App extends Component {
   state = {
     posts: [],
+    query: ''
   }
 
   componentDidMount() {
@@ -33,11 +34,21 @@ class App extends Component {
     }));
   }
 
+  filterPosts = (e) => {
+    this.setState({ query: e.target.value });
+  }
+
   render() {
     return (
       <div className="app-container">
-        <SearchBar />
-        <PostContainer posts={this.state.posts} addComment={this.addComment} />
+        <SearchBar filterPosts={this.filterPosts} />
+        {this.state.posts.length
+          ? <PostContainer
+              posts={this.state.posts}
+              query={this.state.query}
+              addComment={this.addComment}
+              giveHeart={this.giveHeart} />
+          : <p>Loading...</p>}
       </div>
     );
   }
