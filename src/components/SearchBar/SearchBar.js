@@ -8,7 +8,7 @@ const SearchBar = (props) => (
       <i className="fab fa-instagram"></i>
       <h1>Instagram</h1>
     </div>
-    <input type="search" placeholder="Search" aria-label="Search through content" onChange={props.filterPosts} />
+    <input type="search" className="fas" placeholder="&#xf002; Search" aria-label="Search through content" onChange={props.filterPosts} />
     <div className="nav">
       <i className="far fa-compass"></i>
       <i className="far fa-heart"></i>
