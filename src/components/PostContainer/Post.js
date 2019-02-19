@@ -11,7 +11,7 @@ const Post = (props) => (
           {props.username}
         </div>
       </div>
-      <img src={props.imageUrl} alt="post image" />
+      <img src={props.imageUrl} alt="" />
       <div className="icons">
         <i className="far fa-heart"></i>
         <i className="far fa-comment"></i>
