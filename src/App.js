@@ -6,7 +6,11 @@ import './App.css';
 
 class App extends Component {
   state = {
-    posts: dummyData
+    posts: [],
+  }
+
+  componentDidMount() {
+    this.setState({ posts: dummyData });
   }
 
   addComment = (username, text) => {
