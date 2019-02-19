@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import dummyData from './dummy-data';
+import SimpleStorage from 'react-simple-storage';
 import SearchBar from './components/SearchBar/SearchBar';
 import PostContainer from './components/PostContainer/PostContainer';
+import dummyData from './dummy-data';
 import './App.css';
 
 class App extends Component {
   state = {
-    posts: [],
+    posts: dummyData,
     query: ''
   }
 
-  componentDidMount() {
-    this.setState({ posts: dummyData });
-  }
+  // componentDidMount being used by SimpleStorage to load from localStorage
 
   addComment = (username, text) => {
     this.setState(state => ({
@@ -40,16 +39,19 @@ class App extends Component {
 
   render() {
     return (
-      <div className="app-container">
-        <SearchBar filterPosts={this.filterPosts} />
-        {this.state.posts.length
-          ? <PostContainer
-              posts={this.state.posts}
-              query={this.state.query}
-              addComment={this.addComment}
-              giveHeart={this.giveHeart} />
-          : <p>Loading...</p>}
-      </div>
+      <React.Fragment>
+        <SimpleStorage parent={this} />
+        <div className="app-container">
+          <SearchBar filterPosts={this.filterPosts} />
+          {this.state.posts.length
+            ? <PostContainer
+                posts={this.state.posts}
+                query={this.state.query}
+                addComment={this.addComment}
+                giveHeart={this.giveHeart} />
+            : <p>Loading...</p>}
+        </div>
+      </React.Fragment>
     );
   }
 }
