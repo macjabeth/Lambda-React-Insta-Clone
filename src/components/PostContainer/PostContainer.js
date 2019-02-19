@@ -8,6 +8,7 @@ const PostContainer = (props) => (
       ((props.query && post.username.includes(props.query)) || !props.query)
         ? <Post {...post} key={index}
           addComment={props.addComment}
+          deleteComment={props.deleteComment}
           giveHeart={props.giveHeart} />
         : null
     ))}
@@ -16,6 +17,7 @@ const PostContainer = (props) => (
 
 PostContainer.propTypes = {
   addComment: PropTypes.func.isRequired,
+  deleteComment: PropTypes.func.isRequired,
   giveHeart: PropTypes.func.isRequired,
   posts: PropTypes.arrayOf(PropTypes.shape({
     username: PropTypes.string,

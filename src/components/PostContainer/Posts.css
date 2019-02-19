@@ -35,12 +35,12 @@
 }
 
 .icons > i {
-  cursor: pointer;
   transition: 250ms;
 }
 
 .icons > i:hover {
-  color: #fff;
+  cursor: pointer;
+  color: #ff000080;
 }
 
 .icons > i:last-child {

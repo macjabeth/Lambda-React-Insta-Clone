@@ -23,6 +23,16 @@ class App extends Component {
     }));
   }
 
+  deleteComment = (username, index) => {
+    this.setState(state => ({
+      posts: state.posts.map(post =>
+        post.username === username
+          ? {...post, comments: post.comments.filter((comment, i) => i !== index)}
+          : post
+      )
+    }));
+  }
+
   giveHeart = (username) => {
     this.setState(state => ({
       posts: state.posts.map(post =>
@@ -48,6 +58,7 @@ class App extends Component {
                 posts={this.state.posts}
                 query={this.state.query}
                 addComment={this.addComment}
+                deleteComment={this.deleteComment}
                 giveHeart={this.giveHeart} />
             : <p>Loading...</p>}
         </div>
