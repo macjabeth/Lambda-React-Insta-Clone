@@ -20,7 +20,7 @@ const Post = (props) => (
         {props.likes} likes
       </div>
     </div>
-    <CommentSection comments={props.comments} timestamp={props.timestamp} />
+    <CommentSection comments={props.comments} username={props.username} timestamp={props.timestamp} addComment={props.addComment} />
   </article>
 )
 

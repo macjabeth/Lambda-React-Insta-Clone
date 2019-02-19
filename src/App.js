@@ -9,11 +9,21 @@ class App extends Component {
     posts: dummyData
   }
 
+  addComment = (username, text) => {
+    this.setState(state => ({
+      posts: state.posts.map(post =>
+        post.username === username
+          ? {...post, comments: [...post.comments, { username, text }]}
+          : post
+      )
+    }));
+  }
+
   render() {
     return (
       <div className="app-container">
         <SearchBar />
-        <PostContainer posts={this.state.posts} />
+        <PostContainer posts={this.state.posts} addComment={this.addComment} />
       </div>
     );
   }

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const PostContainer = (props) => (
   <div className="posts">
     {props.posts.map((post, index) => (
-      <Post {...post} key={index} />
+      <Post {...post} key={index} addComment={props.addComment} />
     ))}
   </div>
 )
