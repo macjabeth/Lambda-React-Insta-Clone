@@ -5,12 +5,18 @@ import PropTypes from 'prop-types';
 const PostContainer = (props) => (
   <div className="posts">
     {props.posts.map((post, index) => (
-      <Post {...post} key={index} addComment={props.addComment} />
+      ((props.query && post.username.includes(props.query)) || !props.query)
+        ? <Post {...post} key={index}
+          addComment={props.addComment}
+          giveHeart={props.giveHeart} />
+        : null
     ))}
   </div>
 )
 
 PostContainer.propTypes = {
+  addComment: PropTypes.func.isRequired,
+  giveHeart: PropTypes.func.isRequired,
   posts: PropTypes.arrayOf(PropTypes.shape({
     username: PropTypes.string,
     thumbnailUrl: PropTypes.string,

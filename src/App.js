@@ -23,6 +23,16 @@ class App extends Component {
     }));
   }
 
+  giveHeart = (username) => {
+    this.setState(state => ({
+      posts: state.posts.map(post =>
+        post.username === username
+          ? {...post, likes: ++post.likes}
+          : post
+      )
+    }));
+  }
+
   render() {
     return (
       <div className="app-container">

@@ -34,6 +34,15 @@
   margin-left: 1.8rem;
 }
 
+.icons > i {
+  cursor: pointer;
+  transition: 250ms;
+}
+
+.icons > i:hover {
+  color: #fff;
+}
+
 .icons > i:last-child {
   margin-left: 1.5rem;
   transform: rotateY(180deg);
