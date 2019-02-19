@@ -7,9 +7,7 @@ const SearchBar = () => (
       <i className="fab fa-instagram"></i>
       <h1>Instagram</h1>
     </div>
-    <div>
-      <input type="search" placeholder="Search" aria-label="Search through content" />
-    </div>
+    <input type="search" placeholder="Search" aria-label="Search through content" />
     <div className="nav">
       <i className="far fa-compass"></i>
       <i className="far fa-heart"></i>

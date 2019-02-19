@@ -3,6 +3,11 @@
   margin: 0 auto;
 }
 
+.post {
+  border: 1px solid #45454580;
+  border-radius: 5px;
+}
+
 .top {
   height: 6.5rem;
   display: flex;

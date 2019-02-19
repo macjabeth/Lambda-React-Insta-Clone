@@ -7,7 +7,7 @@ header {
 
 header i.fa-instagram {
   font-size: 5.4rem;
-  border-right: 1px solid grey;
+  border-right: 1px solid #808080;
   padding-right: 3.3rem;
   margin-right: 2.5rem;
 }
@@ -24,7 +24,7 @@ header input {
   text-align: center;
   padding: .7rem 2rem;
   border-radius: 5px;
-  border: 1px solid lightgrey;
+  border: 1px solid #454545;
 }
 
 header .nav > i {

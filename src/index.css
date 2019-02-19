@@ -4,4 +4,11 @@ html {
 
 body {
   font-size: 1.6rem;
+  background-color: #1a1a1a;
+  color: #bfbfbf;
+}
+
+input {
+  background-color: inherit;
+  color: currentColor;
 }

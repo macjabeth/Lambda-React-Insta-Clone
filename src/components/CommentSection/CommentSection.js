@@ -12,7 +12,7 @@ const CommentSection = (props) => (
     </div>
     <p>{moment(props.timestamp, 'MMMM D YYYY, LTS').fromNow()}</p>
     <form>
-      <textarea type="text" placeholder="Add a comment..." />
+      <input type="text" placeholder="Add a comment..." />
       <i className="fas fa-ellipsis-h"></i>
     </form>
   </div>
