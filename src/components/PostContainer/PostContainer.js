@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const PostContainer = (props) => (
   <div className="posts">
     {props.posts.map((post, index) => (
-      ((props.query && post.username.includes(props.query)) || !props.query)
+      ((props.query && post.username.match(new RegExp(props.query, 'i'))) || !props.query)
         ? <Post {...post} key={index}
           addComment={props.addComment}
           deleteComment={props.deleteComment}
