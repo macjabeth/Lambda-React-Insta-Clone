@@ -1,8 +1,9 @@
 import React from 'react';
+import CommentSection from '../CommentSection/CommentSection';
 import './Posts.css';
 
 const Post = (props) => (
-  <div className="post">
+  <article className="post">
     <div className="content">
       <div className="top">
         <img src={props.thumbnailUrl} alt="profile pic" />
@@ -19,8 +20,8 @@ const Post = (props) => (
         {props.likes} likes
       </div>
     </div>
-    {/* <CommentSection /> */}
-  </div>
+    <CommentSection comments={props.comments} timestamp={props.timestamp} />
+  </article>
 )
 
 export default Post;
