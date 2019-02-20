@@ -31,3 +31,7 @@ header .nav > i {
   font-size: 3.5rem;
   margin-left: 5.5rem;
 }
+
+header i:hover {
+  cursor: pointer;
+}

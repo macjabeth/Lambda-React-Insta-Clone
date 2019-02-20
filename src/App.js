@@ -1,16 +1,30 @@
 import React, { Component } from 'react';
 import SimpleStorage from 'react-simple-storage';
 import PostsPage from './components/PostContainer/PostsPage';
+import LoginPage from './components/Login/LoginPage';
+import withAuthentication from './components/HOC/withAuthentication';
 import dummyData from './dummy-data';
 import './App.css';
 
+const isNotLoggedInFn = (props) => props.username === '';
+const AppWithConditionalRendering = withAuthentication(isNotLoggedInFn, LoginPage)(PostsPage);
+
 class App extends Component {
   state = {
+    username: '',
     posts: dummyData,
     query: ''
   }
 
   // componentDidMount being used by SimpleStorage to load from localStorage
+
+  completeLogin = (username) => {
+    this.setState({ username });
+  }
+
+  logout = () => {
+    this.setState({ username: '' });
+  }
 
   addComment = (username, text) => {
     this.setState(state => ({
@@ -51,13 +65,14 @@ class App extends Component {
       <React.Fragment>
         <SimpleStorage parent={this} />
         <div className="app-container">
-          <PostsPage
+          <AppWithConditionalRendering
+            { ...this.state }
+            completeLogin={this.completeLogin}
+            logout={this.logout}
             filterPosts={this.filterPosts}
-            posts={this.state.posts}
-            query={this.state.query}
+            giveHeart={this.giveHeart}
             addComment={this.addComment}
             deleteComment={this.deleteComment}
-            giveHeart={this.giveHeart}
           />
         </div>
       </React.Fragment>
