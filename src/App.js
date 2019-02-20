@@ -20,6 +20,7 @@ class App extends Component {
 
   completeLogin = (username) => {
     this.setState({ username });
+    this.refs.app.classList.add('fade-in')
   }
 
   logout = () => {
@@ -64,7 +65,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <SimpleStorage parent={this} />
-        <div className="app-container">
+        <div className="app-container" ref="app">
           <AppWithConditionalRendering
             { ...this.state }
             completeLogin={this.completeLogin}

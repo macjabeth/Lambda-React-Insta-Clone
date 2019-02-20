@@ -1,4 +1,5 @@
 import React from 'react';
+import './Login.css';
 
 class LoginPage extends React.PureComponent {
   state = { username: '' }
@@ -9,24 +10,22 @@ class LoginPage extends React.PureComponent {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.completeLogin(this.state.username);
+    this.refs.login.classList.add('fade-out');
+    setTimeout(() => {
+      this.props.completeLogin(this.state.username);
+    }, 1000)
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input type="text" id="username" name="username" required
-            value={this.state.username} onChange={this.handleUserInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="pass">Password:</label>
-          <input type="password" id="pass" name="password" required />
-        </div>
-        <input type="submit" value="Sign in" />
-      </form>
+      <div className="login" ref="login">
+        <h1>Instagram</h1>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" value={this.state.username} onChange={this.handleUserInput} placeholder="Username" required />
+          <input type="password" placeholder="Password" required />
+          <input type="submit" value="Login" />
+        </form>
+      </div>
     )
   }
 }
