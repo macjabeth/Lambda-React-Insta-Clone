@@ -10,15 +10,16 @@ class LoginPage extends React.PureComponent {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.refs.login.classList.add('fade-out');
+    document.getElementById('login').classList.add('fade-out');
     setTimeout(() => {
+      document.getElementById('login').classList.remove('fade-out');
       this.props.completeLogin(this.state.username);
     }, 1000)
   }
 
   render() {
     return (
-      <div className="login" ref="login">
+      <div className="login" id="login">
         <h1>Instagram</h1>
         <form onSubmit={this.handleSubmit}>
           <input type="text" value={this.state.username} onChange={this.handleUserInput} placeholder="Username" required />

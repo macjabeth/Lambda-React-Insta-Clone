@@ -59,14 +59,3 @@
 .login input[type="submit"]:hover {
   background-color: #ffe4c4;
 }
-
-.fade-out {
-  animation-name: fadeOut;
-  animation-duration: 1s;
-  animation-fill-mode: both;
-}
-
-@keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}

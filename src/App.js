@@ -20,11 +20,17 @@ class App extends Component {
 
   completeLogin = (username) => {
     this.setState({ username });
-    this.refs.app.classList.add('fade-in')
+    document.getElementById('app').classList.add('fade-in');
   }
 
   logout = () => {
-    this.setState({ username: '' });
+    document.getElementById('app').classList.remove('fade-in');
+    document.getElementById('app').classList.add('fade-out');
+    setTimeout(() => {
+      document.getElementById('app').classList.remove('fade-out');
+      this.setState({ username: '' });
+      document.getElementById('login').classList.add('fade-in');
+    }, 1000);
   }
 
   addComment = (username, text) => {
@@ -65,7 +71,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <SimpleStorage parent={this} />
-        <div className="app-container" ref="app">
+        <div className="app-container" id="app">
           <AppWithConditionalRendering
             { ...this.state }
             completeLogin={this.completeLogin}
