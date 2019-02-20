@@ -21,7 +21,7 @@ class CommentSection extends React.PureComponent {
       <div className="comment-section">
         <div className="comments">
           {this.props.comments.map((comment, index) => (
-            <Comment {...comment} key={index} index={index} username={this.props.username} deleteComment={this.props.deleteComment} />
+            <Comment {...comment} key={index} index={index} postUsername={this.props.username} deleteComment={this.props.deleteComment} />
           ))}
         </div>
         <p>{moment(this.props.timestamp, 'MMMM D YYYY, LTS').fromNow()}</p>

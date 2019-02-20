@@ -30,7 +30,7 @@ class App extends Component {
     this.setState(state => ({
       posts: state.posts.map(post =>
         post.username === username
-          ? {...post, comments: [...post.comments, { username, text }]}
+          ? {...post, comments: [...post.comments, { username: state.username, text }]}
           : post
       )
     }));
