@@ -66,7 +66,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <SimpleStorage parent={this} />
-        <div className="app-container" id="app">
+        <div id="app">
           <Router { ...this.state }
             completeLogin={this.completeLogin}
             logout={this.logout}
