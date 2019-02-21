@@ -1,0 +1,45 @@
+.posts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post {
+  border: 1px solid #45454580;
+  border-radius: 5px;
+  max-width: 25%;
+  margin: 1rem;
+}
+
+.top {
+  height: 6.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.top img {
+  height: 50%;
+  border-radius: 50%;
+  margin-left: 1.8rem;
+  margin-right: 1rem;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.icons {
+  font-size: 2.4rem;
+  margin: .5rem;
+  margin-left: 1.8rem;
+}
+
+.icons > i:last-child {
+  margin-left: 1.5rem;
+  transform: rotateY(180deg);
+}
+
+.likes {
+  margin-left: 2rem;
+  font-weight: bold;
+}
