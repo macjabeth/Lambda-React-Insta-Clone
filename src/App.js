@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import SimpleStorage from 'react-simple-storage';
-import PostsPage from './components/PostContainer/PostsPage';
-import LoginPage from './components/Login/LoginPage';
-import withAuthentication from './components/HOC/withAuthentication';
+import Router from './components/HOC/Router';
 import dummyData from './dummy-data';
 import './App.css';
-
-const isNotLoggedInFn = (props) => props.username === '';
-const AppWithConditionalRendering = withAuthentication(isNotLoggedInFn, LoginPage)(PostsPage);
 
 class App extends Component {
   state = {
@@ -72,8 +67,7 @@ class App extends Component {
       <React.Fragment>
         <SimpleStorage parent={this} />
         <div className="app-container" id="app">
-          <AppWithConditionalRendering
-            { ...this.state }
+          <Router { ...this.state }
             completeLogin={this.completeLogin}
             logout={this.logout}
             filterPosts={this.filterPosts}

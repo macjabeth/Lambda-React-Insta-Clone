@@ -1,4 +1,6 @@
 import React from 'react';
+import PostsPage from '../PostContainer/PostsPage';
+import LoginPage from '../Login/LoginPage';
 
 const withAuthentication = (conditionalRenderingFn, LoginPage) =>
   (PostsPage) => ({completeLogin, ...props}) => {
@@ -7,4 +9,8 @@ const withAuthentication = (conditionalRenderingFn, LoginPage) =>
       : <PostsPage { ...props } />
   }
 
-export default withAuthentication;
+const isNotLoggedInFn = (props) => props.username === '';
+
+const Router = withAuthentication(isNotLoggedInFn, LoginPage)(PostsPage);
+
+export default Router;

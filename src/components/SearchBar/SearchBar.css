@@ -20,11 +20,26 @@ header h1 {
 }
 
 header input {
+  outline: none;
   font-size: 2rem;
   text-align: center;
   padding: .7rem 2rem;
   border-radius: 5px;
   border: 1px solid #454545;
+  transition: 250ms;
+}
+
+header input:hover {
+  background-color: darkgrey;
+}
+
+header input:focus {
+  background-color: lightgrey;
+  color: black;
+}
+
+header input:focus::placeholder {
+  opacity: 0;
 }
 
 header .nav > i {
