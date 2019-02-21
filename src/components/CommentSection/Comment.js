@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Comment = (props) => (
-  <p>
+  <p onClick={() => props.deleteComment(props.username, props.index)}>
     <strong>{props.username}</strong> {props.text}
   </p>
 );

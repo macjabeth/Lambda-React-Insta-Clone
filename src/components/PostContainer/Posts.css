@@ -29,9 +29,18 @@
 }
 
 .icons {
-  font-size: 2.4rem;
   margin: .5rem;
   margin-left: 1.8rem;
+}
+
+.icons > i {
+  font-size: 2.4rem;
+  transition: 250ms;
+}
+
+.icons > i:hover {
+  cursor: pointer;
+  color: #ff000080;
 }
 
 .icons > i:last-child {
