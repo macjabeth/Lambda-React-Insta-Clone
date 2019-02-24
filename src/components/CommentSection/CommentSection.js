@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import Comment from './Comment';
+import uuidv4 from 'uuid/v4';
 import './CommentSection.css'
 
 class CommentSection extends React.PureComponent {
@@ -21,7 +22,7 @@ class CommentSection extends React.PureComponent {
       <div className="comment-section">
         <div className="comments">
           {this.props.comments.map((comment, index) => (
-            <Comment {...comment} key={index} index={index} username={this.props.username} deleteComment={this.props.deleteComment} />
+            <Comment {...comment} key={uuidv4()} index={index} postUsername={this.props.username} deleteComment={this.props.deleteComment} />
           ))}
         </div>
         <p>{moment(this.props.timestamp, 'MMMM D YYYY, LTS').fromNow()}</p>

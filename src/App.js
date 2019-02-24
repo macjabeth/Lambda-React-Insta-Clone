@@ -1,23 +1,38 @@
 import React, { Component } from 'react';
 import SimpleStorage from 'react-simple-storage';
-import SearchBar from './components/SearchBar/SearchBar';
-import PostContainer from './components/PostContainer/PostContainer';
+import Router from './components/HOC/Router';
 import dummyData from './dummy-data';
 import './App.css';
 
 class App extends Component {
   state = {
+    username: '',
     posts: dummyData,
     query: ''
   }
 
   // componentDidMount being used by SimpleStorage to load from localStorage
 
+  completeLogin = (username) => {
+    this.setState({ username });
+    document.getElementById('app').classList.add('fade-in');
+  }
+
+  logout = () => {
+    document.getElementById('app').classList.remove('fade-in');
+    document.getElementById('app').classList.add('fade-out');
+    setTimeout(() => {
+      document.getElementById('app').classList.remove('fade-out');
+      this.setState({ username: '' });
+      document.getElementById('login').classList.add('fade-in');
+    }, 1000);
+  }
+
   addComment = (username, text) => {
     this.setState(state => ({
       posts: state.posts.map(post =>
         post.username === username
-          ? {...post, comments: [...post.comments, { username, text }]}
+          ? {...post, comments: [...post.comments, { username: state.username, text }]}
           : post
       )
     }));
@@ -51,16 +66,15 @@ class App extends Component {
     return (
       <React.Fragment>
         <SimpleStorage parent={this} />
-        <div className="app-container">
-          <SearchBar filterPosts={this.filterPosts} />
-          {this.state.posts.length
-            ? <PostContainer
-                posts={this.state.posts}
-                query={this.state.query}
-                addComment={this.addComment}
-                deleteComment={this.deleteComment}
-                giveHeart={this.giveHeart} />
-            : <p>Loading...</p>}
+        <div id="app">
+          <Router { ...this.state }
+            completeLogin={this.completeLogin}
+            logout={this.logout}
+            filterPosts={this.filterPosts}
+            giveHeart={this.giveHeart}
+            addComment={this.addComment}
+            deleteComment={this.deleteComment}
+          />
         </div>
       </React.Fragment>
     );

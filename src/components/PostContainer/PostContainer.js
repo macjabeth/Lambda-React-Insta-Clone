@@ -1,12 +1,13 @@
 import React from 'react';
 import Post from './Post';
 import PropTypes from 'prop-types';
+import uuidv4 from 'uuid/v4';
 
 const PostContainer = (props) => (
   <div className="posts">
-    {props.posts.map((post, index) => (
-      ((props.query && post.username.match(new RegExp(props.query, 'i'))) || !props.query)
-        ? <Post {...post} key={index}
+    {props.posts.map(post => (
+      ((props.query && RegExp(props.query.split('').join('.*?'), 'i').test(post.username)) || !props.query)
+        ? <Post {...post} key={uuidv4()}
           addComment={props.addComment}
           deleteComment={props.deleteComment}
           giveHeart={props.giveHeart} />
